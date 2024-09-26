@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 import models, schemas 
 
-def get_users(db:Session):
+def get_users(db:Session) -> None:
     return db.query(models.User).limit(10).all()
 
 def create_user(db:Session, user: schemas.UserCreate):
