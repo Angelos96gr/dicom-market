@@ -22,15 +22,15 @@ def get_db():
         yield db
     finally:
         db.close()
-"""
+
+
 #APP_PATH = Path(__file__).resolve().parent
 #TEMPLATES = Jinja2Templates(directory=str(APP_PATH/"templates"))
 
 
 origins = [
-    "http://127.0.0.1:8000"
-    "http://localhost:3000",
-    "localhost:3000"
+    "https://127.0.0.1:8000"
+    "https://localhost:3000",
 ]
 
 app.add_middleware(
@@ -40,33 +40,40 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
-"""
+
 @app.post("/users/")
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    """
-    db_user = crud.get_user_by_email(db, email=user.email)
-    if db_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
-        """
+    """Add a new user to the database"""
     return crud.create_user(db=db, user=user)
+
+@app.delete("/users/")
+def delete_create(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    return crud.delete(db=db, user=user)
 
 
 
 @app.get("/users/") # if response model is moved, then route works
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = crud.get_users(db, limit=limit)
+def read_users(db: Session = Depends(get_db)):
+    """Get all users from the database"""
+    users = crud.get_users(db)
     return users
 
+@app.get("/user/{id}")
+def read_user(id: int, db: Session = Depends(get_db) ):
+    """Get a user from the database"""
+    return crud.get_user(db = db, id = id)
 
+"""ToDos:
+# update user information
+# delete user
+"""
 
 @app.get("/", tags = ["root"])
 async def read_root()->dict:
     return {"message": f"Welcome in the root path"}
+
+
 """
-
-
-
-
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request)-> Union[dict]:
     try:

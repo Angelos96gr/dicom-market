@@ -8,3 +8,8 @@
 22 Sep 2024
 - FastAPI works with sqlite and no response models
 - routing, crud, db initialization and models setup
+
+
+26 Sep 2024
+- Backend: Connection with postgreSQL and create user
+- Frontend: Factoring out styling and new Signup page component/route

@@ -8,6 +8,7 @@ import Home from './Components/Home';
 import ItemPage from './Components/ItemPage';
 import Footer from './Components/Footer';
 import FAPI from './Components/FAPI';
+import Signup from './Components/Signup';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           </Route>
           <Route path="/view/:id" element={<ItemPage />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element= {<Signup />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/FAPI" element={<FAPI />}></Route>
         </Routes>

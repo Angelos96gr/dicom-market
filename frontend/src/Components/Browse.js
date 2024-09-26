@@ -5,9 +5,13 @@ import { useParams } from "react-router-dom"
 import Loader from "./Loader"
 import ItemCard from "./ItemCard"
 import { useAxiosGet } from "../Hooks/HttpRequestsAxios"
+import FilterSideBar from "./FilterSideBar"
+
 
 function Browse() {
-    let content = "This will be the browse page"
+    let content
+
+    // Replace with FastAPI routes
     const { q } = useParams()
     const url = `https://api.thecatapi.com/v1/images/search?limit=10`
     let items = useAxiosGet(url)
@@ -23,7 +27,7 @@ function Browse() {
     }
 
     if (items.loading) {
-        content = <Loader />
+        content = <Loader /> //spinner in case of slow item load - implemnt at page level
     }
 
     if (items.error) {
@@ -31,8 +35,8 @@ function Browse() {
     }
 
     return (
-        <div>
-
+        <div className="flex flex-row">
+            <FilterSideBar />
             <div>
                 {content}
             </div>

@@ -10,7 +10,7 @@ const [items, setItems] = useState({
     error: false
 })
 
-useEffect(() => {
+useEffect(() => { //needed to have useEffect? function called from other components when needed
     setItems({
         loading: true,
         data: null,

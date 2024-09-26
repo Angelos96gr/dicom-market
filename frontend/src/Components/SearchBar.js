@@ -1,8 +1,7 @@
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const buttonClass = "bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded-xl"
+import { buttonClassGo } from "../commonStyling";
 
 function SearchBar() {
 
@@ -38,7 +37,7 @@ function SearchBar() {
         <div>
             <form className="flex p-3 m-1 justify-center items-center block gap-2" onSubmit={handleSubmit}>
                 <input className="border rounded-2xl  w-2/5 p-2" type="text" placeholder="Enter a search term" name="searchTerm" onChange={handleInputChange}/>
-                <button className={buttonClass} type="submit">Go</button>
+                <button className={buttonClassGo} type="submit">Go</button>
             </form>
         </div>)
 

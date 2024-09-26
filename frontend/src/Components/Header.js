@@ -1,12 +1,12 @@
 import React from "react";
 import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
-
+import { headerClass } from "../commonStyling";
 
 function Header() {
 
     return (
-        <header className="bg-blue-100 border-b p-5 flex justify-between items-center">
+        <header className={headerClass}>
             <Link to="/">
             <span className="font-bold">DCMarket</span>
             </Link>

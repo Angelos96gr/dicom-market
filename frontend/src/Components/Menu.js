@@ -21,6 +21,12 @@ function Menu(props) {
                 Login
             </Link></li>
             <li><Link
+                to="/signup"
+                className={style}
+                onClick={props.closeMenu}>
+                Sign up
+            </Link></li>
+            <li><Link
                 to="/about"
                 className={style}
                 onClick={props.closeMenu}>
