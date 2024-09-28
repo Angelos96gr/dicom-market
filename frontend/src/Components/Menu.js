@@ -33,10 +33,10 @@ function Menu(props) {
                 About
             </Link></li>
             <li><Link
-                to="/FAPI"
+                to="/admin"
                 className={style}
                 onClick={props.closeMenu}>
-                FAPI
+                Admin Tools
             </Link></li>
         </ul>
     </menu>

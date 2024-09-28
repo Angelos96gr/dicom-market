@@ -1,5 +1,5 @@
 function Home(){
-    return (<img src="ct2.png" alt="HomePage"/>)
+    return (<img src="ct2.jpg" alt="HomePage" className="text-center"/>)
 }
 
 

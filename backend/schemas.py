@@ -41,7 +41,11 @@ class UserBase(BaseModel):
 
 
 class UserCreate(UserBase):
-    pwd: str
+    password: str
+
+class UserUpdate(BaseModel):
+    password: str
+
 
 
 class User(UserBase):
@@ -50,3 +54,4 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+

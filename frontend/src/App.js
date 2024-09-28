@@ -9,6 +9,9 @@ import ItemPage from './Components/ItemPage';
 import Footer from './Components/Footer';
 import FAPI from './Components/FAPI';
 import Signup from './Components/Signup';
+import AdminView from './Components/AdminView';
+import { StrictMode } from 'react';
+import UserProfilePage from './Components/UserProfilePage';
 
 
 function App() {
@@ -39,7 +42,8 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element= {<Signup />}></Route>
           <Route path="/about" element={<About />}></Route>
-          <Route path="/FAPI" element={<FAPI />}></Route>
+          <Route path="/admin" element={<AdminView />}></Route>
+          <Route path ="/user_profile" element = {<UserProfilePage />}></Route>
         </Routes>
 
         <Footer />
