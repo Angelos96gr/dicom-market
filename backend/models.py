@@ -17,9 +17,14 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)  # tbd what is_actve is used for
+    is_active = Column(Boolean, default=True)  # tbd what is_actve is used for i.e., deactivated user? or someone who hasnt logged in yet?
 
     items = relationship("Item", back_populates="owner")
+
+    def __str__(self, cls):
+        return f"New table entry in {cls.__tablename__} table with user (id: {self.id}, email: {self.email}, items: {self.items})"
+    def is_valid(self):
+        return (self.email)
 
 
 class Item(Base):

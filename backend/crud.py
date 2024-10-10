@@ -1,6 +1,7 @@
-from fastapi import HTTPException
+from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 import models, schemas
+from routers import utils
 from hashlib import blake2b
 from starlette import status
 
@@ -13,7 +14,7 @@ def get_user_by_email(db:Session, email:str)-> None:
     query_result = db.query(models.User).filter(models.User.email == email).all()
 
     if query_result is None:
-        raise HTTPException(status_code=401, detail=f"The user with email {email} does not exist")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"The user with email {email} does not exist")
     print("Printing return of get_user", query_result)
     return query_result
 
@@ -27,7 +28,7 @@ def get_user_by_id(db: Session, id: int) -> None:
 
 
 def create_user(db: Session, user: schemas.UserCreate):
-    hashed_pwd = blake2b((user.password).encode("utf-8"), digest_size=4).hexdigest()
+    hashed_pwd = utils.get_hashed_password(user.password)
     db_query = db.query(models.User).filter(models.User.email == user.email).first()
 
     if db_query:
@@ -41,6 +42,22 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
+
+def delete_user_by_id(db: Session, id: int):
+    db_user = db.query(models.User).filter(models.User.id == id)
+    user_to_delete = db_user.first()
+    if user_to_delete is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"User with id {id} could not be deleted. Please check that the user exists in the database",
+        )
+    db_user.delete(synchronize_session=False)
+    db.commit()
+    return f"User with id: {id} was successuflly deleted"
+
+
+
+# DELETES USERS
 def update_user(
     id: int, db: Session, user: schemas.UserUpdate
 ):  # allow changing ONLY password
@@ -49,30 +66,15 @@ def update_user(
     if user_to_update is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"User with id {id} could not be deleted. Please check that the user exists in the database",
+            detail=f"User with id {id} could not be updated. Please check that the user exists in the database",
         )
 
-    hashed_pwd = blake2b((user.password).encode("utf-8"), digest_size=4).hexdigest()
+    hashed_pwd = utils.get_hashed_password(user.password)
     updated_user = {
         "email": user_to_update.email,
         "hashed_password": hashed_pwd,
     }  # creates a user dict with same keys to be overwritten as in the target db_user object
-    db_user.update(updated_user, synchronize_session=False)
+    db_user.update(updated_user)
     db.commit()
 
     return user_to_update
-
-
-def delete_user_by_id(db: Session, id: int):
-    db_user = db.query(models.User).filter(models.User.id == id)
-    user_to_delete = db_user.first()
-
-    if user_to_delete is None:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"User with id {id} could not be deleted. Please check that the user exists in the database",
-        )
-    db_user.delete(synchronize_session=False)
-    db.commit()
-    return user_to_delete
-

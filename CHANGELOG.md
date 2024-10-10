@@ -17,3 +17,7 @@
 28 Sep 2024
 - Backend: Finished apis to manage users (CRUD) & better error handling (HTTP exceptions)
 - Frontent: Connection with Backend api to register new user & UserProfilePage placeholder site
+
+10 Oct 2024
+- Backend: Admin tools & router splits
+- Frontend: Admint tool page displaying all users of the app

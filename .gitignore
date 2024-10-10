@@ -1,7 +1,11 @@
 # Byte-compiled / optimized / DLL files
 __pycache__
 .venv
+.env
 venv/
+.mypy_cache
+.pytest_cache
+testing.sh
 
 
 #From create-react-app default .gitignore
