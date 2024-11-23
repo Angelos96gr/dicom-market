@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-const style = "text-gray-500 text-m rounded-md block px-10 hover:bg-gray-100 hover:text-black  hover:rounded w-full";
+const style = "text-gray-500 text-m rounded-md block px-6 hover:bg-gray-100 hover:text-black  hover:rounded w-full";
 
 function Menu(props) {
     return (

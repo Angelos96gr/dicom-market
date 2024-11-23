@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom"
 import { formElementStyle, formStyle, buttonClass } from "../commonStyling"
-import { useAxiosGet } from "../Hooks/HttpRequestsAxios"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import ActionFormResult from "./ActionFormResult"
-import UserProfilePage from "./UserProfilePage"
 import { useNavigate } from "react-router-dom"
-import Header from "./Header"
 
 
 function Signup() {
-
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
     const [signupMessage, setSignupMessage] = useState("")
@@ -31,7 +27,7 @@ function Signup() {
                 setSignupMessage(`You have succesfully created a user account with the credentials ${email}`);
                 navigate("/user_profile");
 
-            }).catch(err => {
+            }).catch(err => { //handle empty respoonse e.g., in case of server being down
                 if (submissionStatus == "ready") {
                     setSignupMessage(`${JSON.parse(err.request.response).detail}! `)
                 }

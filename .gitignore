@@ -11,11 +11,11 @@ testing.sh
 #From create-react-app default .gitignore
 
 # dependencies
-my-app/node_modules
 frontend/node_modules
 /.pnp
 .pnp.js
 backend/tempCodeRunnerFile.py
+frontend/src/tailwind.css
 
 # testing
 /coverage

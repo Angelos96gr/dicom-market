@@ -42,7 +42,7 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
-
+# DELETES USERS
 def delete_user_by_id(db: Session, id: int):
     db_user = db.query(models.User).filter(models.User.id == id)
     user_to_delete = db_user.first()
@@ -57,7 +57,7 @@ def delete_user_by_id(db: Session, id: int):
 
 
 
-# DELETES USERS
+# UPDATES USERS
 def update_user(
     id: int, db: Session, user: schemas.UserUpdate
 ):  # allow changing ONLY password

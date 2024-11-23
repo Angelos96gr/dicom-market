@@ -14,6 +14,7 @@ function Home() {
 
     const updateImagePrevious = () => {
 
+        console.log(img)
         const currIndex = imageArray.findIndex(getCurrentImage)
 
         if (currIndex > 0) {
@@ -41,17 +42,18 @@ function Home() {
     }
 
 
+    /* ToDo periodic image update
     useEffect(() => {
         console.log("Setting timer")
         const regularUpdate = setInterval(updateImageNext, 8000)
     }
         , [])
 
-
+    */
 
 
     return (
-        <div className="flex justify-center items-center px-10">
+        <div className="flex justify-center items-center px-10 pt-12">
             <Icon name="chevron left" className="cursor-pointer" onClick={updateImagePrevious}></Icon>
             <img src={img} alt="HomePage" className="w-2/5 h-96" />
             <Icon name="chevron right" className="cursor-pointer" onClick={updateImageNext}></Icon>

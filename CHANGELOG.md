@@ -26,3 +26,14 @@
 13 Oct 2024
 - Frontend: 
     - Hompage with sliding images taken from a .json file
+
+
+
+23 Nov 2024
+- Frontend:
+    - Basic functionality (form fill, checking regex and sending request to BE implemented - missing check and request response resolution)
+    - Delete user from UserProfilePage component
+    - Improved error handling in AdminView component
+- Backend:
+    - Corrections in hashed password verification
+    - New .sh for setting up backend server + README

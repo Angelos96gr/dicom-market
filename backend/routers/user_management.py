@@ -26,5 +26,5 @@ def update_user(id: int, user: schemas.UserUpdate, db: Session = Depends(get_db)
 
 @router.delete("/user/{id}", tags = [tag_user])
 def delete_create(id: int, db: Session = Depends(get_db)):
-    """Update the password of a user"""
+    """delete user"""
     return crud.delete_user_by_id(db=db, id=id) 
