@@ -12,6 +12,7 @@ import Signup from './Components/Signup';
 import AdminView from './Components/AdminView';
 import { StrictMode } from 'react';
 import UserProfilePage from './Components/UserProfilePage';
+import 'semantic-ui-css/semantic.min.css'
 
 
 function App() {

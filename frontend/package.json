@@ -10,6 +10,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
+    "list-files": "^1.1.4",
     "postcss-cli": "^11.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^10.0.3",
@@ -17,6 +18,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

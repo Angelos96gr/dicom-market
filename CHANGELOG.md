@@ -21,3 +21,8 @@
 10 Oct 2024
 - Backend: Admin tools & router splits
 - Frontend: Admint tool page displaying all users of the app
+
+
+13 Oct 2024
+- Frontend: 
+    - Hompage with sliding images taken from a .json file

@@ -11,14 +11,18 @@ function AdminView() {
     console.log(typeof (userList))
 
     if (userList) {
-        usersRendered = userList.map(d => (<tr><td className="border-2">{d.id}</td><td className="border-2">{d.email}</td><td className="border-2">{d.hashed_password}</td></tr>))
+        usersRendered = userList.map(d => (<tr key = {d.id}><td className="border-2">{d.id}</td><td className="border-2">{d.email}</td><td className="border-2">{d.hashed_password}</td></tr>))
         tableRendered = (<table className="border-2 table-auto">
-            <tr>
+            <thead>
+                <tr>
                 <th>ID</th>
                 <th>Username</th>
                 <th>Hashed password</th>
-            </tr>
+                </tr>
+            </thead>
+            <tbody>
             {usersRendered}
+            </tbody>
         </table>)
         len = Object.keys(userList).length
     }

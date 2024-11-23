@@ -1,0 +1,10 @@
+{
+    "files": [
+        "/homepageImages/general_ct.png",
+        "/homepageImages/ct_lungs.png",
+        "/homepageImages/pancreas.png",
+        "/homepageImages/x_ray_chest.png"
+    ],
+
+    "comments": "toDO generate automatically by scanning the image folder"
+}

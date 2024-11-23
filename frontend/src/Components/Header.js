@@ -9,12 +9,12 @@ function Header(props) {
     return (
         <header className={headerClass}>
             <Link to="/">
-            <span className="font-bold">DCMarket</span>
+            <span className="font-bold text-gray-500">DCMarket</span>
             </Link>
-            <span>The best DICOM in the market</span>
+            <span></span>
         
         
-        <div className="flex flex-row w-60 bg-blue-100 justify-between">
+        <div className="flex flex-row w-60 justify-between">
             <div className="pr-5">{props.user}</div>
         <Navigation />
 
