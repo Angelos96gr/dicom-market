@@ -6,6 +6,7 @@ import Browse from './Components/Browse';
 import SearchBar from './Components/SearchBar';
 import Home from './Components/Home';
 import ItemPage from './Components/ItemPage';
+import Upload from './Components/Upload';
 import Footer from './Components/Footer';
 import FAPI from './Components/FAPI';
 import Signup from './Components/Signup';
@@ -45,6 +46,7 @@ function App() {
           <Route path="/about" element={<About />}></Route>
           <Route path="/admin" element={<AdminView />}></Route>
           <Route path ="/user_profile" element = {<UserProfilePage />}></Route>
+          <Route path ="/upload" element={<Upload />}></Route>
         </Routes>
 
         <Footer />

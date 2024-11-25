@@ -21,14 +21,18 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 @router.post("/user",status_code=status.HTTP_202_ACCEPTED)
 def authenticate_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     """Check correct authentication"""
-    email = user.email
-    
-    db_user = db.query(models.User).filter(models.User.email == email).first()
-    if db_user is None:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"The user {email} does not exist")
-    
-    if not verify_password(user.password, db_user.hashed_password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"The credentials you entered are not correct")
 
+    print(f"Authentication request by user {user.email}")
+    
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+    if db_user is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"The user {user.email} does not exist.")
+    try:
+        verify_password(user.password, db_user.hashed_password)    
+    except: #catching UnknownHashError (e.g., when old hashing schema was used)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail = f"The credentials could not be verified. Contact support.")
+
+    if not verify_password(user.password, db_user.hashed_password):
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"The credentials you entered are not correct.")
 
     return db_user

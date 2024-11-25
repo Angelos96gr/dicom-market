@@ -27,9 +27,16 @@ function Signup() {
                 setSignupMessage(`You have succesfully created a user account with the credentials ${email}`);
                 navigate("/user_profile");
 
-            }).catch(err => { //handle empty respoonse e.g., in case of server being down
+            }).catch(err => {
+                if (err.code == "ERR_NETWORK"){
+                    setSignupMessage(`Server is down. Please try again later.`)
+                    return
+                }
                 if (submissionStatus == "ready") {
                     setSignupMessage(`${JSON.parse(err.request.response).detail}! `)
+                    setEmail("")
+                    setPwd("")
+                    setSubmissionStatus("pending")
                 }
             }
 

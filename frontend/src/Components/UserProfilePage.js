@@ -26,7 +26,7 @@ function UserProfilePage(props) {
             <div className="flex flex-row bg-red-100 h-screen p-5 justify-between">
                 <div className="flex flex-col bg-green-100 m-10">Here we have the user info for user {props.user}
                     <div className="bg-yellow-100 m-5 w-80 h-80">
-                        the photo
+                        <img className="w-80 h-80 overflow-hidden" src= {process.env.PUBLIC_URL + "/user_face.png"} />
                     </div>
                     <button className={buttonClass} name="signup" type="button" onClick={deleteUser}>Delete profile</button>
 

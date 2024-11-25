@@ -14,7 +14,6 @@ function Home() {
 
     const updateImagePrevious = () => {
 
-        console.log(img)
         const currIndex = imageArray.findIndex(getCurrentImage)
 
         if (currIndex > 0) {

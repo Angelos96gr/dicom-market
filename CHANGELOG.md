@@ -37,3 +37,14 @@
 - Backend:
     - Corrections in hashed password verification
     - New .sh for setting up backend server + README
+
+
+24 Nov 2024:
+- FE error handling for network problems in Login/Signup components
+- BE integration for login/authentication functionality (incl. error handling) - pending JWT integration
+
+
+
+
+25 Nov 2024
+- Upload component: File upload (user input from local disk)
